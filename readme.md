@@ -1,4 +1,3 @@
-this is test2 from  window<<<<<<< HEAD
 this is test2 from  window
 =======
 this is test1 from linux
