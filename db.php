@@ -8,6 +8,7 @@ class Db{
         'host'=>'127.0.0.1',
         'user'=>'root',
         'password'=>'dakehui9118',
+        'databases'=>'wf',
 
     );
     private function __construct()
@@ -22,9 +23,17 @@ class Db{
         return self::$_instance;
     }
     public function connect(){
+        if(!self::$_connectSource){
         self::$_connectSource=mysqli_connect($this->dbconfig['host'],$this->dbconfig['user'],$this->dbconfig['password']);
         if(!self::$_connectSource){
             die('mysql connect fail:'.mysqli_error());
         }
+        mysqli_select_db($this->dbconfig['databases'],self::$_connectSource);
+        mysqli_query('set names UTF8',self::$_connectSource);
+        }
+        return self::$_connectSource;
     }
 }
+
+$connect=Db::getInstance()->connect();
+var_dump($connect);
