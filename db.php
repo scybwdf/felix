@@ -24,11 +24,11 @@ class Db{
     }
     public function connect(){
         if(!self::$_connectSource){
-        self::$_connectSource=new mysqli($this->dbconfig['host'],$this->dbconfig['user'],$this->dbconfig['password']);
+        self::$_connectSource=mysqli_connect($this->dbconfig['host'],$this->dbconfig['user'],$this->dbconfig['password'],$this->dbconfig['databases']);
         if(!self::$_connectSource){
             die('mysql connect fail:'.mysqli_error());
         }
-        mysqli_select_db($this->dbconfig['databases'],self::$_connectSource);
+
         mysqli_query('set names UTF8',self::$_connectSource);
 
         }
