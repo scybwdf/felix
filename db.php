@@ -8,7 +8,7 @@ class Db{
         'host'=>'127.0.0.1',
         'user'=>'root',
         'password'=>'dakehui9118',
-        'databases'=>'wf',
+        'databases'=>'mysql',
 
     );
     private function __construct()
@@ -30,7 +30,9 @@ class Db{
         }
         mysqli_select_db($this->dbconfig['databases'],self::$_connectSource);
         mysqli_query('set names UTF8',self::$_connectSource);
+
         }
+
         return self::$_connectSource;
     }
 }
